@@ -1,25 +1,26 @@
-import { StyleSheet, Text, TextInput } from 'react-native';
 import Screen from './app/components/Screen';
-import { useState } from 'react';
+import AppPicker from './app/components/AppPicker';
 import AppTextInput from './app/components/AppTextInput';
+import { useState } from 'react';
+
+const categories = [
+  { lable: 'furniture', value: 1 },
+  { lable: 'clothing', value: 2 },
+  { lable: 'camera', value: 3 },
+];
 
 export default function App() {
-  const [firstName, setFirstName] = useState('');
+  const [category, setCategory] = useState('');
   return (
     <Screen>
+      <AppPicker
+        selectedItem={category}
+        onSelectItem={(item) => setCategory(item)}
+        items={categories}
+        icon="apps"
+        placeholder="category"
+      />
       <AppTextInput icon="email" placeholder="email" />
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#f8f4f4',
-    padding: 20,
-    paddingTop: 100,
-  },
-  cardContainer: {
-    borderRadius: 20,
-  },
-  cardPhoto: { width: '100%', height: 70, objectFit: 'cover' },
-});
