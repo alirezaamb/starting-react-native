@@ -1,22 +1,14 @@
-import { Image, StyleSheet, View } from 'react-native';
-import WelcomeScreen from './app/screens/WelcomeScreen';
-import ViewImageScreen from './app/screens/ViewImageScreen';
-import AppButton from './app/components/AppText/AppButton';
-import Card from './app/components/Card';
-import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
-import MessagesScreen from './app/screens/MessagesScreen';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { StyleSheet, Text, TextInput } from 'react-native';
 import Screen from './app/components/Screen';
-import Icon from './app/components/Icon';
-import ListItem from './app/components/ListItem';
-import AccountScreen from './app/screens/AccountScreen';
-import ListingsScreen from './app/screens/ListingsScreen';
+import { useState } from 'react';
+import AppTextInput from './app/components/AppTextInput';
 
 export default function App() {
+  const [firstName, setFirstName] = useState('');
   return (
-    // <Screen>
-    <ListingsScreen />
-    // </Screen>
+    <Screen>
+      <AppTextInput icon="email" placeholder="email" />
+    </Screen>
   );
 }
 
