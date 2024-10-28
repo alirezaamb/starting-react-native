@@ -11,6 +11,6 @@ function PickerItem({ lable, onPress }) {
 }
 
 const styles = StyleSheet.create({
-  text: { padding: 20 },
+  text: { padding: 20, color: 'black' },
 });
 export default PickerItem;
