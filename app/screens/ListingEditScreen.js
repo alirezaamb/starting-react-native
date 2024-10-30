@@ -4,12 +4,15 @@ import { AppForm, AppFormField, SubmitButton } from '../components/forms';
 import AppFormPicker from '../components/forms/AppFormPicker';
 import Screen from '../components/Screen';
 import ImageInput from '../components/ImageInput';
+import ImageInputList from '../components/ImageInputList';
+import FormImagePicker from '../components/forms/FormImagePicker';
 
 const validationSchema = yup.object().shape({
   title: yup.string().required().min(1).label('Title'),
   price: yup.number().required().min(1).max(10000).label('Price'),
   description: yup.string().label('Description'),
   category: yup.object().required().nullable().label('Category'),
+  images: yup.array().min(1, 'Please select at least one image'),
 });
 const categories = [
   { label: 'Furniture', value: 1 },
@@ -17,9 +20,7 @@ const categories = [
   { label: 'Camera', value: 3 },
 ];
 
-function ListingEditScreen(props) {
-  const [imageUri, setImageUri] = useState();
-
+function ListingEditScreen() {
   return (
     <Screen>
       <AppForm
@@ -28,14 +29,12 @@ function ListingEditScreen(props) {
           price: '',
           description: '',
           category: null,
+          images: [],
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <ImageInput
-          imageUri={imageUri}
-          onChangeImage={(uri) => setImageUri(uri)}
-        />
+        <FormImagePicker name="images" />
         <AppFormField name="title" placeholder="Title" />
         <AppFormField name="price" keyboardType="numeric" placeholder="Price" />
         <AppFormPicker
