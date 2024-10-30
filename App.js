@@ -1,18 +1,20 @@
-import Screen from './app/components/Screen';
-import AppPicker from './app/components/AppPicker';
-import AppTextInput from './app/components/AppTextInput';
 import { useState } from 'react';
-import LoginScreen from './app/screens/LoginScreen';
-import AccountScreen from './app/screens/AccountScreen';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import ImageInputList from './app/components/ImageInputList';
 import ListingEditScreen from './app/screens/ListingEditScreen';
-import ViewImageScreen from './app/screens/ViewImageScreen';
-import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
-import MessagesScreen from './app/screens/MessagesScreen';
+
 export default function App() {
+  const [imageUris, setImageUris] = useState([]);
+  const handleAdd = (uri) => {
+    setImageUris([...imageUris, uri]);
+  };
+  const handleRemove = (uri) => {
+    setImageUris(imageUris.filter((image) => image !== uri));
+  };
   return (
-    <GestureHandlerRootView>
-      <ListingEditScreen />
-    </GestureHandlerRootView>
+    <ImageInputList
+      imageUris={imageUris}
+      onAddImage={handleAdd}
+      onRemoveImage={handleRemove}
+    />
   );
 }
