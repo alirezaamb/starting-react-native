@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as yup from 'yup';
 import { AppForm, AppFormField, SubmitButton } from '../components/forms';
 import AppFormPicker from '../components/forms/AppFormPicker';
 import Screen from '../components/Screen';
-import ImageInput from '../components/ImageInput';
-import ImageInputList from '../components/ImageInputList';
 import FormImagePicker from '../components/forms/FormImagePicker';
+import useLocation from '../hooks/useLocation';
 
 const validationSchema = yup.object().shape({
   title: yup.string().required().min(1).label('Title'),
@@ -21,6 +20,7 @@ const categories = [
 ];
 
 function ListingEditScreen() {
+  const location = useLocation();
   return (
     <Screen>
       <AppForm
@@ -31,7 +31,7 @@ function ListingEditScreen() {
           category: null,
           images: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => console.log(location)}
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />
