@@ -1,5 +1,5 @@
 import React from 'react';
-import Constasns from 'expo-constants';
+import Constants from 'expo-constants';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
@@ -16,5 +16,5 @@ function Screen({ children, style }) {
 export default Screen;
 
 const styles = StyleSheet.create({
-  screen: { paddingTop: Constasns.statusBarHeight, flex: 1 },
+  screen: { paddingTop: Constants.statusBarHeight, flex: 1 },
 });
