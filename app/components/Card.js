@@ -8,11 +8,11 @@ import {
 import colors from '../config/colors';
 import AppText from './AppText/AppText';
 
-function Card({ title, price, image, onPress }) {
+function Card({ title, price, imageUrl, onPress }) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
-        <Image style={styles.image} source={image} />
+        <Image style={styles.image} source={{ uri: imageUrl }} />
         <View style={styles.details}>
           <AppText>{title}</AppText>
           <AppText>${price}</AppText>
